@@ -75,7 +75,7 @@ source /root/.zshrc;
 
 pnpm install -g nrm;
 
-source $bash_rc_file;
+source /root/.zshrc;
 
 echo -e "${GREEN}nrm 安装完成${NC}"
 
