@@ -59,6 +59,7 @@ is_satisfy="$node_version" > "$corepack_required_version"
 if [[ $is_satisfy ]]; then
     echo -e "${GREEN}Node.js 版本大于 16.9.0，执行 corepack enable 命令${NC}"
     corepack enable;
+    wait
     echo -e "${GREEN}corepack 已启动${NC}"
 else
     echo -e "${YELLOW}Node.js 版本为$node_version，无需执行 corepack enable"
@@ -78,11 +79,12 @@ echo -e "${GREEN}nrm 安装完成${NC}"
 wait
 # 5. 提示输入要下载的代码库连接地址
 # 提示用户是否需要克隆远程代码库
-read -p "${YELLOW}是否需要克隆远程代码库？（输入“是”或“否”）: ${NC}" user_choice
+read -p -e "${YELLOW}是否需要克隆远程代码库？（输入“是”或“否”）: ${NC}" user_choice;
+
 
 if [[ "$user_choice" == "是" ]]; then
     # 提示用户输入远程地址
-    read -p "${YELLOW}请输入远程地址（类似于 https://xxx.xxx.xxx.xxx/git/bc.txt）: ${NC}" remote_url
+    read -p -e "${YELLOW}请输入远程地址（类似于 https://xxx.xxx.xxx.xxx/git/bc.txt）: ${NC}" remote_url;
 
     # 使用换行符分隔仓库地址
     IFS=$'\n' read -ra repo_array <<< "$(curl -s "$remote_url")"
