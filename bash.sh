@@ -33,11 +33,18 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 echo "${GREEN}已安装 ohmyzsh ${NC}"
 
-# 安装 docker
-curl -fsSL https://get.docker.com -o get-docker.sh
-sh ./get-docker.sh
-
-echo "${GREEN}已安装 docker ${NC}"
+# 检查 Docker 是否已安装
+if ! command -v docker &> /dev/null; then
+    # 安装 Docker
+    echo "正在安装 Docker..."
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    sh get-docker.sh
+    usermod -aG docker "$USER"
+    rm get-docker.sh
+    echo "${GREEN}已安装 docker ${NC}"
+else
+    echo "Docker 已经安装。"
+fi
 
 
 # 安装开发环境相关
