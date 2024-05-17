@@ -56,7 +56,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash;
 
 wait
 
-source $bash_rc_file;
+source "$bash_rc_file";
 
 # 2. node
 nvm install node;
@@ -82,7 +82,7 @@ fi
 
 # 4. 安装 nrm
 pnpm setup;
-source $bash_rc_file;
+source "$bash_rc_file";
 
 pnpm install -g nrm;
 
