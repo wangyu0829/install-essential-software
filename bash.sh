@@ -40,14 +40,6 @@ else
     echo "Docker 已经存在"
 fi
 
-
-bash_name=echo $0
-if [[ $bash_name = "bash" ]]; then
-    bash_rc_file="/root/.bashrc"
-elif [[ $bash_name = "zsh" ]]; then
-    bash_rc_file="/root/.zshrc"
-fi
-
 # 安装开发环境相关
 
 # 1. nvm
@@ -56,7 +48,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash;
 
 wait
 
-source "$bash_rc_file";
+source /root/.zshrc;
 
 # 2. node
 nvm install node;
@@ -82,7 +74,7 @@ fi
 
 # 4. 安装 nrm
 pnpm setup;
-source "$bash_rc_file";
+source /root/.zshrc;
 
 pnpm install -g nrm;
 
@@ -94,7 +86,7 @@ echo -e "${GREEN}nrm 安装完成${NC}"
 
 # 5. 提示输入要下载的代码库连接地址
 # 提示用户是否需要克隆远程代码库
-read -p "是否需要克隆远程代码库？（输入“是”或“否”）:" user_choice;
+read -p "是否需要克隆远程代码库？（输入“是”或“否”）:" user_choice
 
 
 if [[ "$user_choice" == "是" ]]; then
