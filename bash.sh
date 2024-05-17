@@ -48,9 +48,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash;
 
 source /root/.zshrc;
 
-wait
-
-
 # 2. node
 nvm install node;
 
@@ -61,7 +58,6 @@ is_satisfy="$node_version" > "$corepack_required_version"
 if [[ $is_satisfy ]]; then
     echo -e "${GREEN}Node.js 版本大于 16.9.0，执行 corepack enable 命令${NC}"
     corepack enable;
-    wait
     echo -e "${GREEN}corepack 已启动${NC}"
 else
     echo -e "${YELLOW}Node.js 版本为$node_version，无需执行 corepack enable"
@@ -79,8 +75,6 @@ source /root/.zshrc;
 
 pnpm install -g nrm;
 
-wait
-
 source $bash_rc_file;
 
 echo -e "${GREEN}nrm 安装完成${NC}"
@@ -92,7 +86,7 @@ read -p "是否需要克隆远程代码库？（输入“是”或“否”）:"
 
 if [[ "$user_choice" == "是" ]]; then
     # 提示用户输入远程地址
-    read -p "请输入远程地址（类似于 https://xxx.xxx.xxx.xxx/git/bc.txt）: " remote_url;
+    read -p "请输入远程地址（类似于 https://xxx.xxx.xxx.xxx/git/bc.txt）: " remote_url
 
     # 使用换行符分隔仓库地址
     IFS=$'\n' read -ra repo_array <<< "$(curl -s "$remote_url")"
@@ -106,8 +100,6 @@ if [[ "$user_choice" == "是" ]]; then
 else
     echo -e "${YELLOW}用户选择不克隆远程代码库。${NC}"
 fi
-
-wait
 
 
 if [[ !($(ls -a /root | grep oh-my-zsh)) ]]; then
