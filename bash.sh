@@ -46,9 +46,10 @@ fi
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash;
 
+source /root/.zshrc;
+
 wait
 
-source /root/.zshrc;
 
 # 2. node
 nvm install node;
