@@ -94,12 +94,12 @@ echo -e "${GREEN}nrm 安装完成${NC}"
 
 # 5. 提示输入要下载的代码库连接地址
 # 提示用户是否需要克隆远程代码库
-read -p -e "${YELLOW}是否需要克隆远程代码库？（输入“是”或“否”）: ${NC}" user_choice;
+read -p "是否需要克隆远程代码库？（输入“是”或“否”）:" user_choice;
 
 
 if [[ "$user_choice" == "是" ]]; then
     # 提示用户输入远程地址
-    read -p -e "${YELLOW}请输入远程地址（类似于 https://xxx.xxx.xxx.xxx/git/bc.txt）: ${NC}" remote_url;
+    read -p "请输入远程地址（类似于 https://xxx.xxx.xxx.xxx/git/bc.txt）: " remote_url;
 
     # 使用换行符分隔仓库地址
     IFS=$'\n' read -ra repo_array <<< "$(curl -s "$remote_url")"
