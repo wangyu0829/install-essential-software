@@ -21,6 +21,8 @@ echo -e "${GREEN}软件包更新完毕${NC}"
 # 安装常用软件 [git, curl, wget, zsh, tmux, vim]
 apt install -y git curl wget zsh nginx tmux vim; 
 
+# 切换zsh
+zsh
 
 echo -e "${GREEN}git curl wget zsh nginx tmux vim 安装完成 ${NC}"
 
