@@ -25,7 +25,7 @@ nvm install node;
 node_version=$(node -v)
 corepack_required_version="v16.9.0"
 
-is_satisfy="$node_version" > "$corepack_required_version"
+is_satisfy="$node_version" -gt "$corepack_required_version"
 if [[ $is_satisfy ]]; then
     echo -e "${GREEN}Node.js 版本大于 16.9.0，执行 corepack enable 命令${NC}"
     corepack enable;
@@ -35,7 +35,7 @@ else
 fi
 
 # 3. 如果当前node版本不支持 corepack，需要手动安装 包管理工具，如 pnpm
-if [[ !($is_satisfy) ]]; then
+if [[ ! $is_satisfy ]]; then
     npm install pnpm;
     echo -e "${GREEN}pnpm 安装完成${NC}"
 fi
@@ -43,13 +43,11 @@ fi
 # 4. 安装 nrm
 pnpm setup;
 source ~/.zshrc;
+wait;
 
 pnpm install -g nrm;
 
 echo -e "${GREEN}nrm 安装完成${NC}"
-
-wait
-source ~/.zshrc;
 
 # # 5. 提示输入要下载的代码库连接地址
 # # 提示用户是否需要克隆远程代码库
