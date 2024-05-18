@@ -43,6 +43,8 @@ fi
 pnpm install -g nrm;
 echo -e "${GREEN}nrm 安装完成${NC}"
 
+wait
+reboot
 # # 5. 提示输入要下载的代码库连接地址
 # # 提示用户是否需要克隆远程代码库
 # read -p "是否需要克隆远程代码库？（输入“是”或“否”）:" user_choice
