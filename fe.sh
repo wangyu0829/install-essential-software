@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/zsh
 # 设置颜色
 GREEN='\033[0;32m' # 绿色
 RED='\033[0;31m'   # 红色
@@ -17,7 +17,7 @@ fi
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash;
 
-source /root/.zshrc;
+source ~/.zshrc;
 
 # 2. node
 nvm install node;
@@ -42,13 +42,14 @@ fi
 
 # 4. 安装 nrm
 pnpm setup;
-source /root/.zshrc;
+source ~/.zshrc;
 
 pnpm install -g nrm;
 
-source /root/.zshrc;
-
 echo -e "${GREEN}nrm 安装完成${NC}"
+
+wait
+source ~/.zshrc;
 
 # # 5. 提示输入要下载的代码库连接地址
 # # 提示用户是否需要克隆远程代码库
