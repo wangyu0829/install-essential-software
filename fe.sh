@@ -25,8 +25,7 @@ nvm install node;
 node_version=$(node -v)
 corepack_required_version="v16.9.0"
 
-is_satisfy="$node_version" -gt "$corepack_required_version"
-if [[ "$node_version" -gt "$corepack_required_version" ]]; then
+if [[ "$node_version" > "$corepack_required_version" ]]; then
     echo -e "${GREEN}Node.js 版本大于 16.9.0，执行 corepack enable 命令${NC}"
     corepack enable;
     echo -e "${GREEN}corepack 已启动${NC}"
