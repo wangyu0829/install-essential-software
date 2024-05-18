@@ -46,3 +46,6 @@ if [[ !($(ls -a /root | grep oh-my-zsh)) ]]; then
 else
     echo -e "${GREEN}ohmyzsh 已经存在${NC}"
 fi
+
+sleep 3
+reboot
