@@ -13,17 +13,22 @@ if [[ $response == "是" || $response == 'Y' || $response == 'y' ]]; then
     # Prompt user to input file containing list of repository URLs
     read -p "请输入远程地址（类似于 https://xxx.xxx.xxx.xxx/git/bc.txt: " url_file
 
-    # Check if file exists
-    if [ ! -f "$url_file" ]; then
-        echo -e "${RED}Error: 文件不存在 '$url_file'.${NC}"
+    wget -O repos.txt "$url_file"
+
+    # Check if download was successful
+    if [ $? -ne 0 ]; then
+        echo "${RED}Error: 文件不存在 '$url_file'.${NC}"
         exit 1
     fi
-
+    
     # Read repository URLs from file and clone each one
     while IFS= read -r repo_url; do
         echo "Cloning repository: $repo_url"
         git clone "$repo_url"
-    done < "$url_file"
+    done < "repos.txt"
+
+    # Remove temporary file
+    rm -f repos.txt
 
     echo -e "${GREEN}已完成逐个克隆到本地。 ${NC}"
 else
