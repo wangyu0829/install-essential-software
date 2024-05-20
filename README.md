@@ -10,7 +10,7 @@ curl -fsSL https://raw.githubusercontent.com/wangyu0829/install-essential-softwa
 按顺序执行
 
 ```shell
-source ./createswap.sh
+bash ./createswap.sh
 ```
 
 ```shell
